@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^MSCachedAsyncViewDrawingDrawBlock)(CGRect frame);
+typedef void (^MSCachedAsyncViewDrawingDrawBlock)(CGRect frame, CGContextRef context);
 typedef void (^MSCachedAsyncViewDrawingCompletionBlock)(UIImage *drawnImage);
 
 @interface MSCachedAsyncViewDrawing : NSObject

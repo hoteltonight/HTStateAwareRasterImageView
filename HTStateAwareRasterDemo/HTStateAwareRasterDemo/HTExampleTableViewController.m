@@ -98,8 +98,6 @@ static NSUInteger const kNumberOfRows = 128;
     cell.rasterizableComponent.cornerRadius = [self.cornerRadii[indexPath.row] doubleValue];
     cell.title = [NSString stringWithFormat:@"HotelTonight %u", indexPath.row];
     
-    NSLog(@"Row %d: %@\n", indexPath.row, [[cell.rasterizableComponent hashStringForKeyPaths:[cell.rasterizableComponent keyPathsThatAffectState]] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]);
-    
     return cell;
 }
 

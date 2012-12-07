@@ -31,13 +31,13 @@ typedef void (^MSCachedAsyncViewDrawingOperationBlock)(_MSViewDrawingOperation *
 + (_MSViewDrawingOperation *)viewDrawingBlockOperationWithBlock:(MSCachedAsyncViewDrawingOperationBlock)operationBlock
 {
     _MSViewDrawingOperation *operation = [[self alloc] init];
-
+    
     __weak _MSViewDrawingOperation *weakOperation = operation;
-
+    
     [operation addExecutionBlock:^{
         operationBlock(weakOperation);
     }];
-
+    
     return operation;
 }
 
@@ -59,12 +59,12 @@ static NSOperationQueue *_sharedOperationQueue = nil;
 + (MSCachedAsyncViewDrawing *)sharedInstance
 {
     static MSCachedAsyncViewDrawing *sharedInstance = nil;
-
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
-
+    
     return sharedInstance;
 }
 
@@ -76,7 +76,7 @@ static NSOperationQueue *_sharedOperationQueue = nil;
         self.cache.name = @"com.mindsnacks.view_drawing.cache";
         self.operationQueue = _sharedOperationQueue;
     }
-
+    
     return self;
 }
 
@@ -90,33 +90,36 @@ static NSOperationQueue *_sharedOperationQueue = nil;
                      completionBlock:(MSCachedAsyncViewDrawingCompletionBlock)completionBlock;
 {
     UIImage *cachedImage = [self.cache objectForKey:cacheKey];
-
+    
     if (cachedImage)
     {
         completionBlock(cachedImage);
         return nil;
     }
-
+    
     MSCachedAsyncViewDrawingDrawBlock heapDrawBlock = [drawBlock copy];
     MSCachedAsyncViewDrawingCompletionBlock heapCompletionBlock = [completionBlock copy];
-
+    
     MSCachedAsyncViewDrawingOperationBlock operationBlock = ^(_MSViewDrawingOperation *operation) {
         if (operation.isCancelled)
         {
             return;
         }
         
-        BOOL opaque = [self colorIsOpaque:backgroundColor];
+        CGFloat contentsScale = [[UIScreen mainScreen] scale];
+        CGSize size = CGSizeMake(imageSize.width * contentsScale, imageSize.height * contentsScale);
         
-        UIGraphicsBeginImageContextWithOptions(imageSize, opaque, 0);
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGContextRef context = CGBitmapContextCreate(NULL, size.width, size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
+        
+        CGContextScaleCTM(context, contentsScale, contentsScale);
         
         if (operation.isCancelled)
         {
-            UIGraphicsEndImageContext();
+            CGColorSpaceRelease(colorSpace);
+            CGContextRelease(context);
             return;
         }
-        
-        CGContextRef context = UIGraphicsGetCurrentContext();
         
         CGRect rectToDraw = (CGRect){.origin = CGPointZero, .size = imageSize};
         
@@ -132,23 +135,28 @@ static NSOperationQueue *_sharedOperationQueue = nil;
             CGContextRestoreGState(context);
         }
         
-        heapDrawBlock(rectToDraw);
+        heapDrawBlock(rectToDraw, context);
         
         if (operation.isCancelled)
         {
-            UIGraphicsEndImageContext();
+            CGColorSpaceRelease(colorSpace);
+            CGContextRelease(context);
             return;
         }
-        
-        UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
-        
-        UIGraphicsEndImageContext();
         
         if (operation.isCancelled)
         {
-            UIGraphicsEndImageContext();
+            CGColorSpaceRelease(colorSpace);
+            CGContextRelease(context);
             return;
         }
+        
+        CGImageRef imageRef = CGBitmapContextCreateImage(context);
+        UIImage *resultImage = [UIImage imageWithCGImage:imageRef scale:contentsScale orientation:UIImageOrientationUp];
+        
+        CGColorSpaceRelease(colorSpace);
+        CGContextRelease(context);
+        CFRelease(imageRef);
         
         [self.cache setObject:resultImage forKey:cacheKey];
         
@@ -156,16 +164,16 @@ static NSOperationQueue *_sharedOperationQueue = nil;
     };
     
     _MSViewDrawingOperation *operation = [_MSViewDrawingOperation viewDrawingBlockOperationWithBlock:[operationBlock copy]];
-
+    
     __strong __block _MSViewDrawingOperation *_operation = operation;
-
+    
     operation.completionBlock = ^{
         dispatch_async(dispatch_get_main_queue(), ^{
             heapCompletionBlock(_operation.resultImage);
             _operation = nil;
         });
     };
-
+    
     if (synchronous)
     {
         operationBlock(operation);
@@ -185,7 +193,7 @@ static NSOperationQueue *_sharedOperationQueue = nil;
 {
     CGFloat alpha = -1.0f;
     [color getRed:NULL green:NULL blue:NULL alpha:&alpha];
-
+    
     BOOL wrongColorSpace = (alpha == -1.0f);
     if (wrongColorSpace)
     {

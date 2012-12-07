@@ -11,7 +11,10 @@
 #import "MSCachedAsyncViewDrawing.h"
 #import "UIView+HTDrawInContext.h"
 
+// Uncommenting this SLOWS THINGS DOWN A LOT and will save all images to disk
 //#define HT_DEBUG_SAVEFILES YES
+
+//#define HT_DEBUG_RASTERLOG YES
 
 @interface HTStateAwareRasterImageView ()
 
@@ -112,24 +115,29 @@
     }
     
     self.rasterizableView.frame = (CGRect){.origin = CGPointZero, .size = size};
-    NSString *cacheKey = [self cacheKey];
-    __unsafe_unretained HTStateAwareRasterImageView *bSelf = self;
     
-    [self performSelector:@selector(checkImageGenerated) withObject:nil afterDelay:2];
+    __block NSString *cacheKey = [self cacheKey];
+    __unsafe_unretained HTStateAwareRasterImageView *bSelf = self;
 
-    MSCachedAsyncViewDrawingDrawBlock drawBlock = ^(CGRect frame)
+    MSCachedAsyncViewDrawingDrawBlock drawBlock = ^(CGRect frame, CGContextRef context)
     {
         if ([bSelf.delegate respondsToSelector:@selector(rasterImageViewWillRegenerateImage:)])
         {
             [bSelf.delegate rasterImageViewWillRegenerateImage:bSelf];
         }
         bSelf.rasterizableView.frame = frame;
-        [bSelf.rasterizableView drawRect:frame inContext:UIGraphicsGetCurrentContext()];
-        //                        NSLog(@"Key: %@\n", [cacheKey stringByReplacingOccurrencesOfString:@"\n" withString:@" "]);
+        [bSelf.rasterizableView drawRect:frame inContext:context];
+#ifdef HT_DEBUG_RASTERLOG
+        NSLog(@"Key: %@\n", [cacheKey stringByReplacingOccurrencesOfString:@"\n" withString:@" "]);
+#endif
     };
     
     MSCachedAsyncViewDrawingCompletionBlock completionBlock = ^(UIImage *drawnImage)
     {
+        if (!drawnImage)
+        {
+            return;
+        }
         if ([bSelf capped])
         {
             bSelf.image = [drawnImage resizableImageWithCapInsets:[bSelf.rasterizableView capEdgeInsets]];
@@ -146,7 +154,7 @@
         
 #ifdef HT_DEBUG_SAVEFILES
         NSString *fileName = [NSString stringWithFormat:@"/%@-%u.png", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
-        NSData *imageData = UIImageJPEGRepresentation(bSelf.image, 1);
+        NSData *imageData = UIImageJPEGRepresentation(drawnImage, 1);
         NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
                                stringByAppendingPathComponent:fileName];
         [imageData writeToFile:imagePath atomically:YES];
@@ -155,7 +163,8 @@
         if (complete) complete();
     };
     
-    [[MSCachedAsyncViewDrawing sharedInstance] drawViewSynchronous:self.drawsOnMainThread
+    [self.drawingOperation cancel];
+    self.drawingOperation = [[MSCachedAsyncViewDrawing sharedInstance] drawViewSynchronous:self.drawsOnMainThread
                                                       withCacheKey:cacheKey
                                                               size:size
                                                    backgroundColor:[UIColor clearColor]
@@ -166,14 +175,6 @@
 - (NSString *)cacheKey
 {
     return [self.rasterizableView hashStringForKeyPaths:[self.rasterizableView keyPathsThatAffectState]];
-}
-
-- (void)checkImageGenerated
-{
-    if (!self.image)
-    {
-        NSLog(@"Blukubluku");
-    }
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
