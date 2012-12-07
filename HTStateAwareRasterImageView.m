@@ -11,6 +11,8 @@
 #import "MSCachedAsyncViewDrawing.h"
 #import "UIView+HTDrawInContext.h"
 
+//#define HT_DEBUG_SAVEFILES YES
+
 @interface HTStateAwareRasterImageView ()
 
 @property (nonatomic, assign) BOOL capped;
@@ -142,11 +144,13 @@
             [bSelf.delegate rasterImageViewImageLoaded:bSelf];
         }
         
-//        NSString *fileName = [NSString stringWithFormat:@"/%@-%u.png", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
-//        NSData *imageData = UIImageJPEGRepresentation(bSelf.image, 1);
-//        NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-//                               stringByAppendingPathComponent:fileName];
-//        [imageData writeToFile:imagePath atomically:YES];
+#ifdef HT_DEBUG_SAVEFILES
+        NSString *fileName = [NSString stringWithFormat:@"/%@-%u.png", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
+        NSData *imageData = UIImageJPEGRepresentation(bSelf.image, 1);
+        NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+                               stringByAppendingPathComponent:fileName];
+        [imageData writeToFile:imagePath atomically:YES];
+#endif
         
         if (complete) complete();
     };
