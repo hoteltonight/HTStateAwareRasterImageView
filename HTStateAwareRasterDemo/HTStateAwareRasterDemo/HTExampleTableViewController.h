@@ -10,6 +10,8 @@
 
 @interface HTExampleTableViewController : UIViewController
 
+@property (nonatomic, assign) BOOL shouldCARasterize;
+
 - (id)initWithCellClass:(Class)cellClass;
 
 @end

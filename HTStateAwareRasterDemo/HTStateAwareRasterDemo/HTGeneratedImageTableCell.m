@@ -35,6 +35,7 @@ static CGFloat const horizontalMargin = 6;
         
         _standardSizeImageView = [[UIImageView alloc] init];
         [self.contentView addSubview:_standardSizeImageView];
+        
     }
     return self;
 }
@@ -67,7 +68,7 @@ static CGFloat const horizontalMargin = 6;
     _image = image;
     
     self.actualSizeImageView.image = image;
-    self.standardSizeImageView.image = image;
+    self.standardSizeImageView.image = [UIImage imageWithCGImage:image.CGImage];
     
     [self setNeedsLayout];
 }

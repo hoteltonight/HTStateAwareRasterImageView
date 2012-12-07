@@ -41,4 +41,12 @@ typedef void (^MSCachedAsyncViewDrawingCompletionBlock)(UIImage *drawnImage);
                            drawBlock:(MSCachedAsyncViewDrawingDrawBlock)drawBlock
                      completionBlock:(MSCachedAsyncViewDrawingCompletionBlock)completionBlock;
 
+- (NSOperation *)drawViewSynchronous:(BOOL)synchronous
+                        withCacheKey:(NSString *)cacheKey
+                                size:(CGSize)imageSize
+                     backgroundColor:(UIColor *)backgroundColor
+                       capEdgeInsets:(UIEdgeInsets)capEdgeInsets
+                           drawBlock:(MSCachedAsyncViewDrawingDrawBlock)drawBlock
+                     completionBlock:(MSCachedAsyncViewDrawingCompletionBlock)completionBlock;
+
 @end

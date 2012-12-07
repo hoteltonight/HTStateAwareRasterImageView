@@ -9,6 +9,7 @@
 #import "HTExampleTableViewController.h"
 #import "HTExampleTableCell.h"
 #import "NSObject+HTPropertyHash.h"
+#import <QuartzCore/QuartzCore.h>
 
 static NSUInteger const kNumberOfRows = 128;
 
@@ -36,8 +37,6 @@ static NSUInteger const kNumberOfRows = 128;
 
 - (void)generateRandomCellStates
 {
-    NSArray *possibleCornerRadii = @[@4, @10, @16];
-    
     UIRectCorner corners1 = UIRectCornerAllCorners;
     UIRectCorner corners2 = UIRectCornerTopLeft | UIRectCornerTopRight;
     UIRectCorner corners3 = UIRectCornerBottomLeft | UIRectCornerBottomRight;
@@ -55,7 +54,7 @@ static NSUInteger const kNumberOfRows = 128;
     NSMutableArray *rectCornersMutable = [NSMutableArray arrayWithCapacity:kNumberOfRows];
     for (NSUInteger idx = 0; idx < kNumberOfRows; idx++)
     {
-        [cornerRadiiMutable addObject:possibleCornerRadii[arc4random() % 3]];
+        [cornerRadiiMutable addObject:[NSNumber numberWithInteger:4 + (arc4random() % 3) * 2]];
         [rectCornersMutable addObject:possibleRectCorners[arc4random() % 5]];
     }
     self.rectCorners = [rectCornersMutable copy];
@@ -89,6 +88,11 @@ static NSUInteger const kNumberOfRows = 128;
     if (!cell)
     {
         cell = [[self.cellClass alloc] init];
+        if (self.shouldCARasterize)
+        {
+            cell.rasterizableComponent.layer.shouldRasterize = YES;
+            cell.rasterizableComponent.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+        }
     }
     
     UIRectCorner rectCorner;

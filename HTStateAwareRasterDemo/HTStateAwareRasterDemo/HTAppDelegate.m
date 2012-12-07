@@ -17,6 +17,8 @@
 @property (nonatomic, strong) UITabBarController *tabBarController;
 @property (nonatomic, strong) HTExampleTableViewController *exampleTableViewController;
 @property (nonatomic, strong) HTExampleTableViewController *noRasterizationExampleTableViewController;
+@property (nonatomic, strong) HTExampleTableViewController *coreAnimationRasterizedTableViewController;
+
 
 @property (nonatomic, strong) HTGeneratedImagesViewController *generatedImagesViewController;
 
@@ -34,11 +36,15 @@
     self.noRasterizationExampleTableViewController = [[HTExampleTableViewController alloc] initWithCellClass:[HTNoRasterizationCell class]];
     self.noRasterizationExampleTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"No rasterization" image:nil tag:1];
 
+    self.coreAnimationRasterizedTableViewController = [[HTExampleTableViewController alloc] initWithCellClass:[HTNoRasterizationCell class]];
+    self.coreAnimationRasterizedTableViewController.shouldCARasterize = YES;
+    self.coreAnimationRasterizedTableViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"CA rasterization" image:nil tag:1];
+    
     self.generatedImagesViewController = [[HTGeneratedImagesViewController alloc] init];
     self.generatedImagesViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"Cached rasters" image:nil tag:1];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = @[self.exampleTableViewController, self.generatedImagesViewController, self.noRasterizationExampleTableViewController];
+    self.tabBarController.viewControllers = @[self.exampleTableViewController, self.generatedImagesViewController, self.noRasterizationExampleTableViewController, self.coreAnimationRasterizedTableViewController];
     self.tabBarController.view.backgroundColor = [UIColor blackColor];
     
     self.window.rootViewController = self.tabBarController;

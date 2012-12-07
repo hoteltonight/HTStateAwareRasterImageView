@@ -80,14 +80,30 @@ static NSOperationQueue *_sharedOperationQueue = nil;
     return self;
 }
 
-#pragma mark - Private
-
 - (NSOperation *)drawViewSynchronous:(BOOL)synchronous
                         withCacheKey:(NSString *)cacheKey
                                 size:(CGSize)imageSize
                      backgroundColor:(UIColor *)backgroundColor
                            drawBlock:(MSCachedAsyncViewDrawingDrawBlock)drawBlock
                      completionBlock:(MSCachedAsyncViewDrawingCompletionBlock)completionBlock;
+{
+    return [self drawViewSynchronous:synchronous
+                        withCacheKey:cacheKey
+                                size:imageSize
+                     backgroundColor:backgroundColor
+                       capEdgeInsets:UIEdgeInsetsZero
+                           drawBlock:drawBlock
+                     completionBlock:completionBlock];
+}
+
+- (NSOperation *)drawViewSynchronous:(BOOL)synchronous
+                        withCacheKey:(NSString *)cacheKey
+                                size:(CGSize)imageSize
+                     backgroundColor:(UIColor *)backgroundColor
+                       capEdgeInsets:(UIEdgeInsets)capEdgeInsets
+                           drawBlock:(MSCachedAsyncViewDrawingDrawBlock)drawBlock
+                     completionBlock:(MSCachedAsyncViewDrawingCompletionBlock)completionBlock;
+
 {
     UIImage *cachedImage = [self.cache objectForKey:cacheKey];
     
@@ -153,6 +169,11 @@ static NSOperationQueue *_sharedOperationQueue = nil;
         
         CGImageRef imageRef = CGBitmapContextCreateImage(context);
         UIImage *resultImage = [UIImage imageWithCGImage:imageRef scale:contentsScale orientation:UIImageOrientationUp];
+        
+        if (!UIEdgeInsetsEqualToEdgeInsets(capEdgeInsets, UIEdgeInsetsZero))
+        {
+            resultImage = [resultImage resizableImageWithCapInsets:capEdgeInsets];
+        }
         
         CGColorSpaceRelease(colorSpace);
         CGContextRelease(context);

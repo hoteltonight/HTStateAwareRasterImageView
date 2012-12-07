@@ -21,6 +21,7 @@
 @property (nonatomic, assign) BOOL capped;
 @property (nonatomic, assign) BOOL implementsShouldRasterize;
 @property (nonatomic, assign) BOOL implementsUseMinimumSizeForCaps;
+@property (nonatomic, assign) BOOL implementsCapEdgeInsets;
 @property (nonatomic, strong) NSOperation *drawingOperation;
 
 @end
@@ -66,6 +67,7 @@
     self.capped = [self.rasterizableView respondsToSelector:@selector(capEdgeInsets)];
     self.implementsShouldRasterize = [self.rasterizableView respondsToSelector:@selector(shouldRegenerateRasterForKeyPath:change:)];
     self.implementsUseMinimumSizeForCaps = [self.rasterizableView respondsToSelector:@selector(useMinimumFrameForCaps)];
+    self.implementsCapEdgeInsets = [self.rasterizableView respondsToSelector:@selector(capEdgeInsets)];
     
     for (NSString *propertyName in [rasterizableView keyPathsThatAffectState])
     {
@@ -107,10 +109,15 @@
     {
         return;
     }
+
+    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+    if (self.implementsCapEdgeInsets)
+    {
+        edgeInsets = [self.rasterizableView capEdgeInsets];        
+    }
     
     if (useMinimumCapSize)
     {
-        UIEdgeInsets edgeInsets = [self.rasterizableView capEdgeInsets];
         size = CGSizeMake(edgeInsets.left + edgeInsets.right + 1, edgeInsets.top + edgeInsets.bottom + 1);
     }
     
@@ -138,14 +145,7 @@
         {
             return;
         }
-        if ([bSelf capped])
-        {
-            bSelf.image = [drawnImage resizableImageWithCapInsets:[bSelf.rasterizableView capEdgeInsets]];
-        }
-        else
-        {
-            bSelf.image = drawnImage;
-        }
+        if (drawnImage != bSelf.image) bSelf.image = drawnImage;
         
         if ([bSelf.delegate respondsToSelector:@selector(rasterImageViewImageLoaded:)])
         {
@@ -168,6 +168,7 @@
                                                       withCacheKey:cacheKey
                                                               size:size
                                                    backgroundColor:[UIColor clearColor]
+                                                     capEdgeInsets:edgeInsets
                                                          drawBlock:drawBlock
                                                    completionBlock:completionBlock];
 }
