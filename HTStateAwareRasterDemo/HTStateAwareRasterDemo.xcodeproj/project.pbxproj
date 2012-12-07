@@ -1,0 +1,383 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FFA170716714B270023BBE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA170616714B270023BBE6 /* UIKit.framework */; };
+		1FFA170916714B270023BBE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA170816714B270023BBE6 /* Foundation.framework */; };
+		1FFA170B16714B270023BBE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA170A16714B270023BBE6 /* CoreGraphics.framework */; };
+		1FFA171116714B270023BBE6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FFA170F16714B270023BBE6 /* InfoPlist.strings */; };
+		1FFA171316714B270023BBE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA171216714B270023BBE6 /* main.m */; };
+		1FFA171716714B270023BBE6 /* HTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA171616714B270023BBE6 /* HTAppDelegate.m */; };
+		1FFA171916714B270023BBE6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFA171816714B270023BBE6 /* Default.png */; };
+		1FFA171B16714B270023BBE6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFA171A16714B270023BBE6 /* Default@2x.png */; };
+		1FFA171D16714B270023BBE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFA171C16714B270023BBE6 /* Default-568h@2x.png */; };
+		1FFA173B16714C570023BBE6 /* HTStateAwareRasterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173516714C570023BBE6 /* HTStateAwareRasterImageView.m */; };
+		1FFA173C16714C570023BBE6 /* NSObject+HTPropertyHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173716714C570023BBE6 /* NSObject+HTPropertyHash.m */; };
+		1FFA173D16714C570023BBE6 /* UIView+HTDrawInContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173A16714C570023BBE6 /* UIView+HTDrawInContext.m */; };
+		1FFA174016714DBA0023BBE6 /* HTExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173F16714DBA0023BBE6 /* HTExampleTableViewController.m */; };
+		1FFA174316714E530023BBE6 /* HTGeneratedImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA174216714E530023BBE6 /* HTGeneratedImagesViewController.m */; };
+		1FFA174616714F5F0023BBE6 /* HTGeneratedImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA174516714F5F0023BBE6 /* HTGeneratedImagesView.m */; };
+		1FFA174B167150C30023BBE6 /* HTExampleRasterizableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA174A167150C30023BBE6 /* HTExampleRasterizableComponent.m */; };
+		1FFA174E16715BA30023BBE6 /* HTExampleTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA174D16715BA30023BBE6 /* HTExampleTableCell.m */; };
+		3A0CC368C5CA48229D04A4BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02CCAE1F6A5E4A36960B75E2 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		02CCAE1F6A5E4A36960B75E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFA170216714B270023BBE6 /* HTStateAwareRasterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTStateAwareRasterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFA170616714B270023BBE6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1FFA170816714B270023BBE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1FFA170A16714B270023BBE6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1FFA170E16714B270023BBE6 /* HTStateAwareRasterDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HTStateAwareRasterDemo-Info.plist"; sourceTree = "<group>"; };
+		1FFA171016714B270023BBE6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1FFA171216714B270023BBE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1FFA171416714B270023BBE6 /* HTStateAwareRasterDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTStateAwareRasterDemo-Prefix.pch"; sourceTree = "<group>"; };
+		1FFA171516714B270023BBE6 /* HTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTAppDelegate.h; sourceTree = "<group>"; };
+		1FFA171616714B270023BBE6 /* HTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTAppDelegate.m; sourceTree = "<group>"; };
+		1FFA171816714B270023BBE6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		1FFA171A16714B270023BBE6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1FFA171C16714B270023BBE6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1FFA173516714C570023BBE6 /* HTStateAwareRasterImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTStateAwareRasterImageView.m; path = ../../HTStateAwareRasterImageView.m; sourceTree = "<group>"; };
+		1FFA173616714C570023BBE6 /* HTStateAwareRasterImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTStateAwareRasterImageView.h; path = ../../HTStateAwareRasterImageView.h; sourceTree = "<group>"; };
+		1FFA173716714C570023BBE6 /* NSObject+HTPropertyHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+HTPropertyHash.m"; path = "../../NSObject+HTPropertyHash.m"; sourceTree = "<group>"; };
+		1FFA173816714C570023BBE6 /* NSObject+HTPropertyHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+HTPropertyHash.h"; path = "../../NSObject+HTPropertyHash.h"; sourceTree = "<group>"; };
+		1FFA173916714C570023BBE6 /* UIView+HTDrawInContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HTDrawInContext.h"; path = "../../UIView+HTDrawInContext.h"; sourceTree = "<group>"; };
+		1FFA173A16714C570023BBE6 /* UIView+HTDrawInContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HTDrawInContext.m"; path = "../../UIView+HTDrawInContext.m"; sourceTree = "<group>"; };
+		1FFA173E16714DBA0023BBE6 /* HTExampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTExampleTableViewController.h; sourceTree = "<group>"; };
+		1FFA173F16714DBA0023BBE6 /* HTExampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTExampleTableViewController.m; sourceTree = "<group>"; };
+		1FFA174116714E530023BBE6 /* HTGeneratedImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTGeneratedImagesViewController.h; sourceTree = "<group>"; };
+		1FFA174216714E530023BBE6 /* HTGeneratedImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTGeneratedImagesViewController.m; sourceTree = "<group>"; };
+		1FFA174416714F5F0023BBE6 /* HTGeneratedImagesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTGeneratedImagesView.h; sourceTree = "<group>"; };
+		1FFA174516714F5F0023BBE6 /* HTGeneratedImagesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTGeneratedImagesView.m; sourceTree = "<group>"; };
+		1FFA1749167150C30023BBE6 /* HTExampleRasterizableComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTExampleRasterizableComponent.h; sourceTree = "<group>"; };
+		1FFA174A167150C30023BBE6 /* HTExampleRasterizableComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTExampleRasterizableComponent.m; sourceTree = "<group>"; };
+		1FFA174C16715BA30023BBE6 /* HTExampleTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTExampleTableCell.h; sourceTree = "<group>"; };
+		1FFA174D16715BA30023BBE6 /* HTExampleTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTExampleTableCell.m; sourceTree = "<group>"; };
+		39561EF3961D4F44AA78414A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1FFA16FF16714B270023BBE6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FFA170716714B270023BBE6 /* UIKit.framework in Frameworks */,
+				1FFA170916714B270023BBE6 /* Foundation.framework in Frameworks */,
+				1FFA170B16714B270023BBE6 /* CoreGraphics.framework in Frameworks */,
+				3A0CC368C5CA48229D04A4BA /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1FFA16F716714B270023BBE6 = {
+			isa = PBXGroup;
+			children = (
+				1FFA170C16714B270023BBE6 /* HTStateAwareRasterDemo */,
+				1FFA170516714B270023BBE6 /* Frameworks */,
+				1FFA170316714B270023BBE6 /* Products */,
+				39561EF3961D4F44AA78414A /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		1FFA170316714B270023BBE6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA170216714B270023BBE6 /* HTStateAwareRasterDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1FFA170516714B270023BBE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA170616714B270023BBE6 /* UIKit.framework */,
+				1FFA170816714B270023BBE6 /* Foundation.framework */,
+				1FFA170A16714B270023BBE6 /* CoreGraphics.framework */,
+				02CCAE1F6A5E4A36960B75E2 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1FFA170C16714B270023BBE6 /* HTStateAwareRasterDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA173316714C4C0023BBE6 /* Core */,
+				1FFA171516714B270023BBE6 /* HTAppDelegate.h */,
+				1FFA171616714B270023BBE6 /* HTAppDelegate.m */,
+				1FFA1749167150C30023BBE6 /* HTExampleRasterizableComponent.h */,
+				1FFA174A167150C30023BBE6 /* HTExampleRasterizableComponent.m */,
+				1FFA1747167150910023BBE6 /* Table tab */,
+				1FFA1748167150A00023BBE6 /* Generated images tab */,
+				1FFA170D16714B270023BBE6 /* Supporting Files */,
+			);
+			path = HTStateAwareRasterDemo;
+			sourceTree = "<group>";
+		};
+		1FFA170D16714B270023BBE6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA170E16714B270023BBE6 /* HTStateAwareRasterDemo-Info.plist */,
+				1FFA170F16714B270023BBE6 /* InfoPlist.strings */,
+				1FFA171216714B270023BBE6 /* main.m */,
+				1FFA171416714B270023BBE6 /* HTStateAwareRasterDemo-Prefix.pch */,
+				1FFA171816714B270023BBE6 /* Default.png */,
+				1FFA171A16714B270023BBE6 /* Default@2x.png */,
+				1FFA171C16714B270023BBE6 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1FFA173316714C4C0023BBE6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA173616714C570023BBE6 /* HTStateAwareRasterImageView.h */,
+				1FFA173516714C570023BBE6 /* HTStateAwareRasterImageView.m */,
+				1FFA173816714C570023BBE6 /* NSObject+HTPropertyHash.h */,
+				1FFA173716714C570023BBE6 /* NSObject+HTPropertyHash.m */,
+				1FFA173916714C570023BBE6 /* UIView+HTDrawInContext.h */,
+				1FFA173A16714C570023BBE6 /* UIView+HTDrawInContext.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		1FFA1747167150910023BBE6 /* Table tab */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA173E16714DBA0023BBE6 /* HTExampleTableViewController.h */,
+				1FFA173F16714DBA0023BBE6 /* HTExampleTableViewController.m */,
+				1FFA174C16715BA30023BBE6 /* HTExampleTableCell.h */,
+				1FFA174D16715BA30023BBE6 /* HTExampleTableCell.m */,
+			);
+			name = "Table tab";
+			sourceTree = "<group>";
+		};
+		1FFA1748167150A00023BBE6 /* Generated images tab */ = {
+			isa = PBXGroup;
+			children = (
+				1FFA174116714E530023BBE6 /* HTGeneratedImagesViewController.h */,
+				1FFA174216714E530023BBE6 /* HTGeneratedImagesViewController.m */,
+				1FFA174416714F5F0023BBE6 /* HTGeneratedImagesView.h */,
+				1FFA174516714F5F0023BBE6 /* HTGeneratedImagesView.m */,
+			);
+			name = "Generated images tab";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1FFA170116714B270023BBE6 /* HTStateAwareRasterDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FFA172916714B270023BBE6 /* Build configuration list for PBXNativeTarget "HTStateAwareRasterDemo" */;
+			buildPhases = (
+				1FFA16FE16714B270023BBE6 /* Sources */,
+				1FFA16FF16714B270023BBE6 /* Frameworks */,
+				1FFA170016714B270023BBE6 /* Resources */,
+				A3A0366C2C2D448DBFC78CED /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HTStateAwareRasterDemo;
+			productName = HTStateAwareRasterDemo;
+			productReference = 1FFA170216714B270023BBE6 /* HTStateAwareRasterDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1FFA16F916714B270023BBE6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HT;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = HotelTonight;
+			};
+			buildConfigurationList = 1FFA16FC16714B270023BBE6 /* Build configuration list for PBXProject "HTStateAwareRasterDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1FFA16F716714B270023BBE6;
+			productRefGroup = 1FFA170316714B270023BBE6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1FFA170116714B270023BBE6 /* HTStateAwareRasterDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1FFA170016714B270023BBE6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FFA171116714B270023BBE6 /* InfoPlist.strings in Resources */,
+				1FFA171916714B270023BBE6 /* Default.png in Resources */,
+				1FFA171B16714B270023BBE6 /* Default@2x.png in Resources */,
+				1FFA171D16714B270023BBE6 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A3A0366C2C2D448DBFC78CED /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1FFA16FE16714B270023BBE6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FFA171316714B270023BBE6 /* main.m in Sources */,
+				1FFA171716714B270023BBE6 /* HTAppDelegate.m in Sources */,
+				1FFA173B16714C570023BBE6 /* HTStateAwareRasterImageView.m in Sources */,
+				1FFA173C16714C570023BBE6 /* NSObject+HTPropertyHash.m in Sources */,
+				1FFA173D16714C570023BBE6 /* UIView+HTDrawInContext.m in Sources */,
+				1FFA174016714DBA0023BBE6 /* HTExampleTableViewController.m in Sources */,
+				1FFA174316714E530023BBE6 /* HTGeneratedImagesViewController.m in Sources */,
+				1FFA174616714F5F0023BBE6 /* HTGeneratedImagesView.m in Sources */,
+				1FFA174B167150C30023BBE6 /* HTExampleRasterizableComponent.m in Sources */,
+				1FFA174E16715BA30023BBE6 /* HTExampleTableCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1FFA170F16714B270023BBE6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FFA171016714B270023BBE6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1FFA172716714B270023BBE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1FFA172816714B270023BBE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1FFA172A16714B270023BBE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39561EF3961D4F44AA78414A /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HTStateAwareRasterDemo/HTStateAwareRasterDemo-Prefix.pch";
+				INFOPLIST_FILE = "HTStateAwareRasterDemo/HTStateAwareRasterDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1FFA172B16714B270023BBE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39561EF3961D4F44AA78414A /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HTStateAwareRasterDemo/HTStateAwareRasterDemo-Prefix.pch";
+				INFOPLIST_FILE = "HTStateAwareRasterDemo/HTStateAwareRasterDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1FFA16FC16714B270023BBE6 /* Build configuration list for PBXProject "HTStateAwareRasterDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FFA172716714B270023BBE6 /* Debug */,
+				1FFA172816714B270023BBE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FFA172916714B270023BBE6 /* Build configuration list for PBXNativeTarget "HTStateAwareRasterDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FFA172A16714B270023BBE6 /* Debug */,
+				1FFA172B16714B270023BBE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1FFA16F916714B270023BBE6 /* Project object */;
+}

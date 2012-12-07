@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^HTSARIVVoidBlock)();
+
 @protocol HTRasterizableView <NSObject>
 
 - (NSArray *)keyPathsThatAffectState;
@@ -23,7 +25,7 @@
 @end
 
 @class HTStateAwareRasterImageView;
-@protocol HTRasterWrapperDelegate <NSObject>
+@protocol HTStateAwareRasterImageViewDelegate <NSObject>
 
 @optional
 - (void)rasterWrapperWillRegenerateImage:(HTStateAwareRasterImageView *)rasterWrapper; // May be called outside main thread
@@ -35,10 +37,10 @@
 
 @property (nonatomic, strong) UIView<HTRasterizableView> *rasterizableView;
 @property (nonatomic, assign) BOOL drawsOnMainThread;
-@property (atomic, assign) id<HTRasterWrapperDelegate> delegate;
+@property (atomic, assign) id<HTStateAwareRasterImageViewDelegate> delegate;
 
 // For prerendering only
 @property (nonatomic, assign) BOOL kvoEnabled;
-- (void)regenerateImage:(HTVoidBlock)complete;
+- (void)regenerateImage:(HTSARIVVoidBlock)complete;
 
 @end

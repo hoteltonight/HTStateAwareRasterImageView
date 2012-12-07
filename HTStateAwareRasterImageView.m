@@ -91,7 +91,7 @@
     [self performSelector:@selector(regenerateImage:) withObject:nil afterDelay:0];
 }
 
-- (void)regenerateImage:(HTVoidBlock)complete
+- (void)regenerateImage:(HTSARIVVoidBlock)complete
 {
     CGSize size = self.bounds.size;
     if (CGSizeEqualToSize(size, CGSizeZero))
@@ -130,11 +130,13 @@
                   {
                       bSelf.image = drawnImage;
                   }
-//                  NSString *fileName = [NSString stringWithFormat:@"/HTCWV-%@-%u.png", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
-//                  NSData *imageData = UIImageJPEGRepresentation(bSelf.image, 1);
-//                  NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-//                                         stringByAppendingPathComponent:fileName];
-//                  [imageData writeToFile:imagePath atomically:YES];
+                  
+                  NSString *fileName = [NSString stringWithFormat:@"/%@-%u.png", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
+                  NSData *imageData = UIImageJPEGRepresentation(bSelf.image, 1);
+                  NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+                                         stringByAppendingPathComponent:fileName];
+                  [imageData writeToFile:imagePath atomically:YES];
+                  
                   if (complete) complete();
               }];
 }

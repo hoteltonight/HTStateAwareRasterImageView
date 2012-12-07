@@ -7,7 +7,6 @@
 //
 
 #import "NSObject+HTPropertyHash.h"
-#import "MARTNSObject.h"
 
 @implementation NSObject (HTPropertyHash)
 
