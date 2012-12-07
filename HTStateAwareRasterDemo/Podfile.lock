@@ -13,6 +13,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MAObjCRuntime: 284004079156d10cb8237bc3ffcfa3a0e1a0af22
-  MSCachedAsyncViewDrawing: cf86e78f60c7deffafefd71e813b41502bb8c23a
+  MSCachedAsyncViewDrawing: 5351aa20449eaa03526896ebdd7ceaccd9cdc24f
 
 COCOAPODS: 0.16.0

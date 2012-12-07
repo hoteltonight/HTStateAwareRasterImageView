@@ -8,19 +8,13 @@ Helper class that allows you to draw views (a)synchronously to a UIImage with ca
 
 So you have a UITableView in your application that scrolls slow. You decide to implement the cell drawing entirely in CoreGraphics implementing ```-[UIView drawRect:]``` in your cell. This is perfect, until you have to draw images. ```CGContextDrawImage``` is **really slow** compared to using ```UIImageView```.
 
-For this reason, many times you'll find yourself preferring to use ```UIImageView``` even if some compositing has to happen on the cell, because rendering images with it is **FAST** due to the crazy optimizations that it implements internally.
+For this reason, many times you'll find yourself preferring to use ```UIImageView``` even if some compositing has to happen on the cell, because rendering images with it is **FAST**.
 
-But sometimes you do have to use ```CGContextDrawImage```, because you have to do something more complex like masking, clipping, etc. Wouldn't it be great if you could still do that, but pass the result to a ```UIImageView``` easily, so that you get the benefit from both worlds? That's what ```MSCachedAsyncViewDrawing``` does.
-
-## When to use MSCachedAsyncViewDrawing
-Needless to say you shouldn't just go ahead and apply this to all of the UIViews in your app. There's a drawback in this approach, as you're incurring in higher memory usage by storing the result of the all the drawing operations.
-**The only way to know if using `MSCachedAsyncViewDrawing` improves or not the performance in your particular case, is to try it out and compare.**
-As a general rule on when *it makes sense* to use it would be when -`drawRect:` is becoming a bottleneck, specially if it's using `CGContextDrawImage` inside. This can happen when you have many complex views in the cells of a `UITableView`.
+But sometimes you do have to use ```CGContextDrawImage```, because you have to do something more complex like masking, clipping, etc. Wouldn't it be great if you could still do that, but pass the result to a ```UIImageView``` easily? That's what ```MSCachedAsyncViewDrawing``` does.
 
 ## Sample Project
 
-The sample project contains two view controllers that contain a table view in which every row has 3 views that implement `-drawInRect:`. One of them uses ```MSCachedAsyncViewDrawing``` and the other one doesn't. This is an example on how to use this class and its performance benefit. Install the sample app on your iOS device and compare.
-It's also a typical use case for this class, since there are many views on screen at the same time, and they all have to render a `UIImage`, this becomes a bottleneck. `MSCachedAsyncViewDrawing` makes this asynchronous, hence not blocking the main thread and getting perfect scrolling performance, and it also prevents the views from rendering more than once.
+The sample project contains two view controllers that contain a table view in which every row has 3 views that implement `-drawInRect:`. One of them uses ```MSCachedAsyncViewDrawing``` and the other one doesn't. This is a very good example on how to use this class and its performance benefit. Install the sample app on your iOS device and compare.
 
 ## How to use it
 
@@ -47,7 +41,7 @@ A subsequent call with the same `cacheKey` will result in the immediate call of 
 
 The cache is implemented using `NSCache`, so you don't have to worry about putting caching too many images, because iOS is going to take care of evicting obejcts as the available memory goes low.
 
-If you prefer to block the UI while the rendering is happening, beacuse you want to make sure that the image view is not empty at any point, you can use this other method, which immediately returns the ```UIImage``` object:
+If you prefer to block the UI while the rendering is happening, beacuse you want to make sure that the image view is not empty at any point, you can use this other method, which inmediately returns the ```UIImage``` object:
 
 ```objc
 - (UIImage *)drawViewSyncWithCacheKey:(NSString *)cacheKey

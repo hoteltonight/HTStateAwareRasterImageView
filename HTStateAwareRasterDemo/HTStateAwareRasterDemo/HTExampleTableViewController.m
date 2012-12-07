@@ -8,6 +8,7 @@
 
 #import "HTExampleTableViewController.h"
 #import "HTExampleTableCell.h"
+#import "NSObject+HTPropertyHash.h"
 
 static NSUInteger const kNumberOfRows = 128;
 
@@ -17,15 +18,17 @@ static NSUInteger const kNumberOfRows = 128;
 
 @property (nonatomic, strong) NSArray *cornerRadii;
 @property (nonatomic, strong) NSArray *rectCorners;
+@property (nonatomic, assign) Class cellClass;
 
 @end
 
 @implementation HTExampleTableViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithCellClass:(Class)cellClass;
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        _cellClass = cellClass;
         [self generateRandomCellStates];
     }
     return self;
@@ -33,7 +36,7 @@ static NSUInteger const kNumberOfRows = 128;
 
 - (void)generateRandomCellStates
 {
-    NSArray *possibleCornerRadii = @[@6, @12, @18];
+    NSArray *possibleCornerRadii = @[@4, @10, @16];
     
     UIRectCorner corners1 = UIRectCornerAllCorners;
     UIRectCorner corners2 = UIRectCornerTopLeft | UIRectCornerTopRight;
@@ -82,10 +85,10 @@ static NSUInteger const kNumberOfRows = 128;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HTExampleTableCell *cell = [tableView dequeueReusableCellWithIdentifier:HTExampleTableCellReuseIdentifier];
+    UITableViewCell<HTExampleTableCellProtocol> *cell = [tableView dequeueReusableCellWithIdentifier:[self.cellClass reuseIdentifier]];
     if (!cell)
     {
-        cell = [[HTExampleTableCell alloc] init];
+        cell = [[self.cellClass alloc] init];
     }
     
     UIRectCorner rectCorner;
@@ -93,6 +96,9 @@ static NSUInteger const kNumberOfRows = 128;
     
     cell.rasterizableComponent.roundedCorners = rectCorner;
     cell.rasterizableComponent.cornerRadius = [self.cornerRadii[indexPath.row] doubleValue];
+    cell.title = [NSString stringWithFormat:@"HotelTonight %u", indexPath.row];
+    
+    NSLog(@"Row %d: %@\n", indexPath.row, [[cell.rasterizableComponent hashStringForKeyPaths:[cell.rasterizableComponent keyPathsThatAffectState]] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]);
     
     return cell;
 }

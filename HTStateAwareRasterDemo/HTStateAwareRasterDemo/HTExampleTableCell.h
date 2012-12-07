@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "HTExampleRasterizableComponent.h"
+#import "HTExampleTableCellProtocol.h"
 
 static NSString * const HTExampleTableCellReuseIdentifier = @"HTExampleTableCellReuseIdentifier";
 
-@interface HTExampleTableCell : UITableViewCell
-
-@property (nonatomic, strong) HTExampleRasterizableComponent *rasterizableComponent;
+@interface HTExampleTableCell : UITableViewCell <HTExampleTableCellProtocol>
 
 @end

@@ -9,8 +9,6 @@
 #import "HTExampleRasterizableComponent.h"
 #import <QuartzCore/QuartzCore.h>
 
-static UIEdgeInsets const kEdgeInsets = { 6, 12, 6, 12 };
-
 @interface HTExampleRasterizableComponent ()
 
 @property (nonatomic, strong) CAShapeLayer *maskShapeLayer;
@@ -23,6 +21,7 @@ static UIEdgeInsets const kEdgeInsets = { 6, 12, 6, 12 };
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.layer.contentsScale = [[UIScreen mainScreen] scale];
         _maskShapeLayer = [CAShapeLayer layer];
         self.layer.mask = _maskShapeLayer;
         self.backgroundColor = [UIColor lightGrayColor];
@@ -35,7 +34,7 @@ static UIEdgeInsets const kEdgeInsets = { 6, 12, 6, 12 };
     [super layoutSubviews];
     
     self.maskShapeLayer.frame = self.bounds;
-    self.maskShapeLayer.path = [UIBezierPath bezierPathWithRoundedRect:UIEdgeInsetsInsetRect(self.bounds, kEdgeInsets)
+    self.maskShapeLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds
                                                  byRoundingCorners:self.roundedCorners
                                                        cornerRadii:CGSizeMake(self.cornerRadius, self.cornerRadius)].CGPath;
 }

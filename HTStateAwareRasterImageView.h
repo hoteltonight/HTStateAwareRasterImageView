@@ -17,7 +17,7 @@ typedef void (^HTSARIVVoidBlock)();
 @optional
 - (UIEdgeInsets)capEdgeInsets;
 
-// YES means 1px between caps vertically and horizontally for draw size.  capEdgeInsets must be implemented for this.
+// YES means 1pt between caps vertically and horizontally for draw size.  capEdgeInsets must be implemented for this.
 - (BOOL)useMinimumFrameForCaps;
 
 - (BOOL)shouldRegenerateRasterForKeyPath:(NSString *)keyPath change:(NSDictionary *)dictionary;
@@ -28,8 +28,8 @@ typedef void (^HTSARIVVoidBlock)();
 @protocol HTStateAwareRasterImageViewDelegate <NSObject>
 
 @optional
-- (void)rasterWrapperWillRegenerateImage:(HTStateAwareRasterImageView *)rasterWrapper; // May be called outside main thread
-- (void)rasterWrapperImageLoaded;
+- (void)rasterImageViewWillRegenerateImage:(HTStateAwareRasterImageView *)rasterImageView; // May be called outside main thread
+- (void)rasterImageViewImageLoaded:(HTStateAwareRasterImageView *)rasterImageView;
 
 @end
 
@@ -38,6 +38,8 @@ typedef void (^HTSARIVVoidBlock)();
 @property (nonatomic, strong) UIView<HTRasterizableView> *rasterizableView;
 @property (nonatomic, assign) BOOL drawsOnMainThread;
 @property (atomic, assign) id<HTStateAwareRasterImageViewDelegate> delegate;
+
+- (NSString *)cacheKey;
 
 // For prerendering only
 @property (nonatomic, assign) BOOL kvoEnabled;

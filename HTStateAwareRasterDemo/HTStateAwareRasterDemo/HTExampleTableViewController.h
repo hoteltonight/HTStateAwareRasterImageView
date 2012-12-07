@@ -10,4 +10,6 @@
 
 @interface HTExampleTableViewController : UIViewController
 
+- (id)initWithCellClass:(Class)cellClass;
+
 @end
