@@ -8,7 +8,7 @@ DEPENDENCIES:
 - MAObjCRuntime
 
 SPEC CHECKSUMS:
-  JJCachedAsyncViewDrawing: b57a25fafeb967aa78f203ff706c6cd364c1a153
+  JJCachedAsyncViewDrawing: 6ebb56c4b4c3242469015ac5de99af75e6360d4a
   MAObjCRuntime: 284004079156d10cb8237bc3ffcfa3a0e1a0af22
 
 COCOAPODS: 0.16.0

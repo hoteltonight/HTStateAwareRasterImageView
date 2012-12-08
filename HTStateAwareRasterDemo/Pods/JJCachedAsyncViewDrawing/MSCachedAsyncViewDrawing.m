@@ -131,6 +131,8 @@ static NSOperationQueue *_sharedOperationQueue = nil;
         CGContextRef context = CGBitmapContextCreate(NULL, size.width, size.height, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
         
         CGContextScaleCTM(context, contentsScale, contentsScale);
+        CGAffineTransform flipVertical = CGAffineTransformTranslate(CGAffineTransformMakeScale(1, -1), 0, -imageSize.height);
+        CGContextConcatCTM(context, flipVertical);
         
         if (operation.isCancelled)
         {
