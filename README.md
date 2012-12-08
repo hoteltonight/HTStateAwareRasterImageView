@@ -60,11 +60,12 @@ For debugging purposes, the cache key is available through this method.
 
 ## Demo project
 
-The demo project has three tabs: 
+The demo project has four tabs: 
 
 * A tableview taking advantage of HTStateAwareRasterImageView
 * A tableview that displays cache key, actual size and cell-height sized cached images
-* A tableview that uses the same components without rasterization
+* A tableview that uses the same component without rasterization
+* A tableview that uses the same component with Core Animation rasterization enabled
 
 <img src="https://raw.github.com/hoteltonight/HTStateAwareRasterImageView/master/tab1.png" alt="HotelTonight" title="HotelTonight" style="display:block; margin: 10px auto 30px auto;">
 <img src="https://raw.github.com/hoteltonight/HTStateAwareRasterImageView/master/tab2.png" alt="HotelTonight" title="HotelTonight" style="display:block; margin: 10px auto 30px auto;">
