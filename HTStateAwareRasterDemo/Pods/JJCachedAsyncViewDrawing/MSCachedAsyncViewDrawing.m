@@ -6,6 +6,8 @@
 //
 //
 
+// Modified by Jacob Jennings
+
 #import "MSCachedAsyncViewDrawing.h"
 
 @interface MSCachedAsyncViewDrawing ()
@@ -32,7 +34,7 @@ typedef void (^MSCachedAsyncViewDrawingOperationBlock)(_MSViewDrawingOperation *
 {
     _MSViewDrawingOperation *operation = [[self alloc] init];
     
-    __weak _MSViewDrawingOperation *weakOperation = operation;
+    __unsafe_unretained _MSViewDrawingOperation *weakOperation = operation;
     
     [operation addExecutionBlock:^{
         operationBlock(weakOperation);

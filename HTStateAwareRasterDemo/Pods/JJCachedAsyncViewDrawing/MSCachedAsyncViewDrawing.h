@@ -41,6 +41,9 @@ typedef void (^MSCachedAsyncViewDrawingCompletionBlock)(UIImage *drawnImage);
                            drawBlock:(MSCachedAsyncViewDrawingDrawBlock)drawBlock
                      completionBlock:(MSCachedAsyncViewDrawingCompletionBlock)completionBlock;
 
+/**
+ * @param `capEdgeInsets` Return UIImage with capEdgeInsets as specified.
+ */
 - (NSOperation *)drawViewSynchronous:(BOOL)synchronous
                         withCacheKey:(NSString *)cacheKey
                                 size:(CGSize)imageSize

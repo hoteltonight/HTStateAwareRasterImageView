@@ -1,18 +1,14 @@
 
 PODS:
+- JJCachedAsyncViewDrawing (0.0.1)
 - MAObjCRuntime (0.0.1)
-- MSCachedAsyncViewDrawing (1.0)
 
 DEPENDENCIES:
+- JJCachedAsyncViewDrawing
 - MAObjCRuntime
-- MSCachedAsyncViewDrawing (from `./MSCachedAsyncViewDrawing.podspec')
-
-EXTERNAL SOURCES:
-  MSCachedAsyncViewDrawing:
-    :podspec: ./MSCachedAsyncViewDrawing.podspec
 
 SPEC CHECKSUMS:
+  JJCachedAsyncViewDrawing: b57a25fafeb967aa78f203ff706c6cd364c1a153
   MAObjCRuntime: 284004079156d10cb8237bc3ffcfa3a0e1a0af22
-  MSCachedAsyncViewDrawing: 5351aa20449eaa03526896ebdd7ceaccd9cdc24f
 
 COCOAPODS: 0.16.0

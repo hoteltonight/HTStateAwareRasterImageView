@@ -3,5 +3,4 @@ platform :ios, :deployment_target => '5.0'
 xcodeproj 'HTStateAwareRasterDemo'
 
 pod 'MAObjCRuntime'
-
-pod 'MSCachedAsyncViewDrawing', :podspec => './MSCachedAsyncViewDrawing.podspec'
+pod 'JJCachedAsyncViewDrawing'
