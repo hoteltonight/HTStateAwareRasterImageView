@@ -5,7 +5,7 @@ HTStateAwareRasterImageView
 
 ## Overview
 
-HTStateAwareRasterImageView is a rasterization system that caches rendered components based on state.  The advantage over Core Animation's rasterization is that you only draw a component once for each unique state.
+HTStateAwareRasterImageView is a rasterization system that caches rendered components based on state.  The advantage over Core Animation's rasterization is that you only draw a component once for each unique state.  Asynchronous drawing is also supported.
 
 ## Installation
 
