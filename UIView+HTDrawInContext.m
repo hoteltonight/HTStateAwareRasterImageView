@@ -17,12 +17,6 @@
     if (self.layer.mask)
     {
         UIImage *layerMaskImage = [self layerMaskImage];
-        
-//        NSData *imageData = UIImageJPEGRepresentation(layerMaskImage, 1);
-//        NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-//                               stringByAppendingPathComponent:[NSString stringWithFormat:@"/DINC-%@.png", [NSDate date]]];
-//        [imageData writeToFile:imagePath atomically:YES];
-        
         CGContextClipToMask(context, rect, layerMaskImage.CGImage);
     }
     [self.layer renderInContext:context];
