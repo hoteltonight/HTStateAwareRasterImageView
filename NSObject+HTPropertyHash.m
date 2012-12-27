@@ -54,8 +54,7 @@
     else if ([object respondsToSelector:@selector(hashDescription)])
     {
         return [(id<HTCustomHash>)object hashDescription];
-    }
-    if (CFGetTypeID((__bridge CFTypeRef)object) == CGColorGetTypeID()) {
+    } else if (object && CFGetTypeID((__bridge CFTypeRef)object) == CGColorGetTypeID()) {
         CGColorRef colorRef = (CGColorRef)CFBridgingRetain(object);
         return [self descriptionForCGColor:colorRef];
     }
