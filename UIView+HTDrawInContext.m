@@ -14,6 +14,8 @@
 - (void)drawRect:(CGRect)rect inContext:(CGContextRef)context;
 {
     [self layoutSubviews];
+    self.layer.contentsScale = [[UIScreen mainScreen] scale];
+    self.layer.mask.contentsScale = [[UIScreen mainScreen] scale];
     if (self.layer.mask)
     {
         UIImage *layerMaskImage = [self layerMaskImage];
