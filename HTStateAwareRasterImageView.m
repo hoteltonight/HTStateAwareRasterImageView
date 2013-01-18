@@ -71,7 +71,7 @@
     
     for (NSString *propertyName in [rasterizableView keyPathsThatAffectState])
     {
-        [rasterizableView addObserver:self forKeyPath:propertyName options:NSKeyValueObservingOptionNew context:nil];
+        [rasterizableView addObserver:self forKeyPath:propertyName options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     }
     [self regenerateImage:nil];
 }
@@ -98,6 +98,12 @@
         }
     }
     
+    id old = change[NSKeyValueChangeOldKey];
+    id new = change[NSKeyValueChangeNewKey];
+    if ([new isEqual:old])
+    {
+        return;
+    }
     [self regenerateImage:nil];
 }
 
