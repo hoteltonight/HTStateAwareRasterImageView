@@ -14,7 +14,7 @@
 // Uncommenting this SLOWS THINGS DOWN A LOT and will save all images to disk
 //#define HT_DEBUG_SAVEFILES YES
 
-//#define HT_DEBUG_RASTERLOG YES
+#define HT_DEBUG_RASTERLOG YES
 
 @interface HTStateAwareRasterImageView ()
 
@@ -42,6 +42,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    [self regenerateImage:nil];
 }
 
 - (void)layoutRasterizableView;
@@ -171,12 +172,12 @@
     
     [self.drawingOperation cancel];
     self.drawingOperation = [[MSCachedAsyncViewDrawing sharedInstance] drawViewSynchronous:self.drawsOnMainThread
-                                                      withCacheKey:cacheKey
-                                                              size:size
-                                                   backgroundColor:[UIColor clearColor]
-                                                     capEdgeInsets:edgeInsets
-                                                         drawBlock:drawBlock
-                                                   completionBlock:completionBlock];
+                                                                              withCacheKey:cacheKey
+                                                                                      size:size
+                                                                           backgroundColor:[UIColor clearColor]
+                                                                             capEdgeInsets:edgeInsets
+                                                                                 drawBlock:drawBlock
+                                                                           completionBlock:completionBlock];
 }
 
 - (NSString *)cacheKey
