@@ -14,7 +14,7 @@
 // Uncommenting this SLOWS THINGS DOWN A LOT and will save all images to disk
 //#define HT_DEBUG_SAVEFILES YES
 
-#define HT_DEBUG_RASTERLOG YES
+//#define HT_DEBUG_RASTERLOG YES
 
 @interface HTStateAwareRasterImageView ()
 
