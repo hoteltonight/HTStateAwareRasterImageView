@@ -190,4 +190,34 @@
     [self regenerateImage:nil];
 }
 
+#pragma mark - Touch forwarding
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    if (!self.gestureRecognizers || ![self.gestureRecognizers count]) {
+        [self.rasterizableView touchesBegan:touches withEvent:event];
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    if (!self.gestureRecognizers || ![self.gestureRecognizers count]) {
+        [self.rasterizableView touchesMoved:touches withEvent:event];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    if (!self.gestureRecognizers || ![self.gestureRecognizers count]) {
+        [self.rasterizableView touchesEnded:touches withEvent:event];
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
+{
+    if (!self.gestureRecognizers || ![self.gestureRecognizers count]) {
+        [self.rasterizableView touchesCancelled:touches withEvent:event];
+    }
+}
+
 @end
