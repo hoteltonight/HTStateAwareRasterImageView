@@ -14,7 +14,7 @@
 // Uncommenting this SLOWS THINGS DOWN A LOT and will save all images to disk
 //#define HT_DEBUG_SAVEFILES YES
 
-#define HT_DEBUG_RASTERLOG YES
+//#define HT_DEBUG_RASTERLOG YES
 
 @interface HTStateAwareRasterImageView ()
 
@@ -245,7 +245,6 @@
     [self.descendantRasterImageViews sortUsingComparator:^NSComparisonResult(HTStateAwareRasterImageView *obj1, HTStateAwareRasterImageView *obj2) {
         return [NSStringFromClass([obj1.rasterizableView class]) compare:NSStringFromClass([obj2.rasterizableView class])];
     }];
-    NSLog(@"\n\nDESCENDANTS: %@\n", self.descendantRasterImageViews);
     [self regenerateImage:nil];
 }
 
