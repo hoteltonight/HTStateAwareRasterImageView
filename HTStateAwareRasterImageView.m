@@ -9,20 +9,20 @@
 #import "HTStateAwareRasterImageView.h"
 #import "NSObject+HTPropertyHash.h"
 #import "MSCachedAsyncViewDrawing.h"
-#import "UIView+HTDrawInContext.h"
+#import "UIView+HTRaster.h"
 
 // Uncommenting this SLOWS THINGS DOWN A LOT and will save all images to disk
 //#define HT_DEBUG_SAVEFILES YES
 
-//#define HT_DEBUG_RASTERLOG YES
+#define HT_DEBUG_RASTERLOG YES
 
 @interface HTStateAwareRasterImageView ()
 
-@property (nonatomic, assign) BOOL capped;
 @property (nonatomic, assign) BOOL implementsShouldRasterize;
 @property (nonatomic, assign) BOOL implementsUseMinimumSizeForCaps;
 @property (nonatomic, assign) BOOL implementsCapEdgeInsets;
 @property (nonatomic, strong) NSOperation *drawingOperation;
+@property (nonatomic, strong) NSMutableArray *descendantRasterImageViews;
 
 @end
 
@@ -35,6 +35,7 @@
     {
         _kvoEnabled = YES;
         _drawsOnMainThread = YES;
+        _descendantRasterImageViews = [NSMutableArray array];
     }
     return self;
 }
@@ -56,16 +57,18 @@
 - (void)dealloc
 {
     [self removeAllObservers];
+    _rasterizableView.htRasterImageView = nil;
     self.delegate = nil;
 }
 
 - (void)setRasterizableView:(UIView<HTRasterizableView> *)rasterizableView
 {
     [self removeAllObservers];
+    _rasterizableView.htRasterImageView = nil;
     _rasterizableView = rasterizableView;
+    _rasterizableView.htRasterImageView = self;
     [self layoutRasterizableView];
     
-    self.capped = [self.rasterizableView respondsToSelector:@selector(capEdgeInsets)];
     self.implementsShouldRasterize = [self.rasterizableView respondsToSelector:@selector(shouldRegenerateRasterForKeyPath:change:)];
     self.implementsUseMinimumSizeForCaps = [self.rasterizableView respondsToSelector:@selector(useMinimumFrameForCaps)];
     self.implementsCapEdgeInsets = [self.rasterizableView respondsToSelector:@selector(capEdgeInsets)];
@@ -152,8 +155,12 @@
         {
             return;
         }
-        if (drawnImage != bSelf.image) bSelf.image = drawnImage;
-        
+        if (drawnImage != bSelf.image)
+        {
+            bSelf.image = drawnImage;
+            [self informFirstAncestorRasterImageViewThatWeRegenerated];
+        }
+
         if ([bSelf.delegate respondsToSelector:@selector(rasterImageViewImageLoaded:)])
         {
             [bSelf.delegate rasterImageViewImageLoaded:bSelf];
@@ -180,9 +187,19 @@
                                                                            completionBlock:completionBlock];
 }
 
+- (void)informFirstAncestorRasterImageViewThatWeRegenerated
+{
+    [[self firstAncestorRasterizableView].htRasterImageView regenerateImage:nil];
+}
+
 - (NSString *)cacheKey
 {
-    return [self.rasterizableView hashStringForKeyPaths:[self.rasterizableView keyPathsThatAffectState]];
+    NSMutableString *cacheString = [[self.rasterizableView hashStringForKeyPaths:[self.rasterizableView keyPathsThatAffectState]] mutableCopy];
+    for (HTStateAwareRasterImageView *descendantRasterImageView in self.descendantRasterImageViews)
+    {
+        [cacheString appendString:[descendantRasterImageView cacheKey]];
+    }
+    return [cacheString copy];
 }
 
 - (void)willMoveToWindow:(UIWindow *)newWindow
@@ -218,6 +235,23 @@
     if (!self.gestureRecognizers || ![self.gestureRecognizers count]) {
         [self.rasterizableView touchesCancelled:touches withEvent:event];
     }
+}
+
+#pragma mark - Descendant rasterization
+
+- (void)registerDescendantRasterImageView:(HTStateAwareRasterImageView *)descendant
+{
+    [self.descendantRasterImageViews addObject:descendant];
+    [self.descendantRasterImageViews sortUsingComparator:^NSComparisonResult(HTStateAwareRasterImageView *obj1, HTStateAwareRasterImageView *obj2) {
+        return [NSStringFromClass([obj1.rasterizableView class]) compare:NSStringFromClass([obj2.rasterizableView class])];
+    }];
+    NSLog(@"\n\nDESCENDANTS: %@\n", self.descendantRasterImageViews);
+    [self regenerateImage:nil];
+}
+
+- (void)unregisterDescendantRasterImageView:(HTStateAwareRasterImageView *)descendant
+{
+    [self.descendantRasterImageViews removeObject:descendant];
 }
 
 @end
