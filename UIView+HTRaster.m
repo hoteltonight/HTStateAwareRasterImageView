@@ -7,7 +7,6 @@
 //
 
 #import "UIView+HTRaster.h"
-#import "NSString+SSToolkitAdditions.h"
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 
@@ -80,10 +79,6 @@
     while (view.superview)
     {
         view = view.superview;
-        if ([NSStringFromClass([self class]) containsString:@"HTPatternView"])
-        {
-            NSLog(@"superview iter: %@", view);
-        }
         if (view && view != self && [view conformsToProtocol:@protocol(HTRasterizableView)] && view.htRasterImageView)
         {
             return (UIView<HTRasterizableView> *)view;
