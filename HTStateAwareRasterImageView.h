@@ -40,6 +40,8 @@ typedef void (^HTSARIVVoidBlock)();
 @property (atomic, assign) id<HTStateAwareRasterImageViewDelegate> delegate;
 
 - (NSString *)cacheKey;
+- (void)registerDescendantRasterImageView:(HTStateAwareRasterImageView *)descendant;
+- (void)unregisterDescendantRasterImageView:(HTStateAwareRasterImageView *)descendant;
 
 // For prerendering only
 @property (nonatomic, assign) BOOL kvoEnabled;
