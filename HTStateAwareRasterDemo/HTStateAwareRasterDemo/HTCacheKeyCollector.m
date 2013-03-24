@@ -14,6 +14,16 @@
 
 @implementation HTCacheKeyCollector
 
++ (instancetype)shared
+{
+    static HTCacheKeyCollector *cacheKeyCollector;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cacheKeyCollector = [[HTCacheKeyCollector alloc] init];
+    });
+    return cacheKeyCollector;
+}
+
 - (id)init
 {
     self = [super init];

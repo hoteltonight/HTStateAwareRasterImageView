@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F93B07D16FE9F070028BAC7 /* UIView+HTRaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93B07C16FE9F070028BAC7 /* UIView+HTRaster.m */; };
 		1FCB6BE1167288C0005582ED /* HTGeneratedImageTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCB6BE0167288C0005582ED /* HTGeneratedImageTableCell.m */; };
 		1FCB6BE416728EF9005582ED /* HTCacheKeyCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCB6BE316728EF9005582ED /* HTCacheKeyCollector.m */; };
-		1FCB6BE716728FBF005582ED /* NSObject+HTSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCB6BE616728FBE005582ED /* NSObject+HTSingleton.m */; };
 		1FFA170716714B270023BBE6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA170616714B270023BBE6 /* UIKit.framework */; };
 		1FFA170916714B270023BBE6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA170816714B270023BBE6 /* Foundation.framework */; };
 		1FFA170B16714B270023BBE6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FFA170A16714B270023BBE6 /* CoreGraphics.framework */; };
@@ -21,7 +21,6 @@
 		1FFA171D16714B270023BBE6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFA171C16714B270023BBE6 /* Default-568h@2x.png */; };
 		1FFA173B16714C570023BBE6 /* HTStateAwareRasterImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173516714C570023BBE6 /* HTStateAwareRasterImageView.m */; };
 		1FFA173C16714C570023BBE6 /* NSObject+HTPropertyHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173716714C570023BBE6 /* NSObject+HTPropertyHash.m */; };
-		1FFA173D16714C570023BBE6 /* UIView+HTDrawInContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173A16714C570023BBE6 /* UIView+HTDrawInContext.m */; };
 		1FFA174016714DBA0023BBE6 /* HTExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA173F16714DBA0023BBE6 /* HTExampleTableViewController.m */; };
 		1FFA174316714E530023BBE6 /* HTGeneratedImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA174216714E530023BBE6 /* HTGeneratedImagesViewController.m */; };
 		1FFA174B167150C30023BBE6 /* HTExampleRasterizableComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA174A167150C30023BBE6 /* HTExampleRasterizableComponent.m */; };
@@ -32,12 +31,12 @@
 
 /* Begin PBXFileReference section */
 		02CCAE1F6A5E4A36960B75E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F93B07B16FE9F070028BAC7 /* UIView+HTRaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HTRaster.h"; path = "../../UIView+HTRaster.h"; sourceTree = "<group>"; };
+		1F93B07C16FE9F070028BAC7 /* UIView+HTRaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HTRaster.m"; path = "../../UIView+HTRaster.m"; sourceTree = "<group>"; };
 		1FCB6BDF167288C0005582ED /* HTGeneratedImageTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTGeneratedImageTableCell.h; sourceTree = "<group>"; };
 		1FCB6BE0167288C0005582ED /* HTGeneratedImageTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTGeneratedImageTableCell.m; sourceTree = "<group>"; };
 		1FCB6BE216728EF9005582ED /* HTCacheKeyCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCacheKeyCollector.h; sourceTree = "<group>"; };
 		1FCB6BE316728EF9005582ED /* HTCacheKeyCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCacheKeyCollector.m; sourceTree = "<group>"; };
-		1FCB6BE516728FBE005582ED /* NSObject+HTSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HTSingleton.h"; sourceTree = "<group>"; };
-		1FCB6BE616728FBE005582ED /* NSObject+HTSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HTSingleton.m"; sourceTree = "<group>"; };
 		1FFA170216714B270023BBE6 /* HTStateAwareRasterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTStateAwareRasterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FFA170616714B270023BBE6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1FFA170816714B270023BBE6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,8 +54,6 @@
 		1FFA173616714C570023BBE6 /* HTStateAwareRasterImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTStateAwareRasterImageView.h; path = ../../HTStateAwareRasterImageView.h; sourceTree = "<group>"; };
 		1FFA173716714C570023BBE6 /* NSObject+HTPropertyHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+HTPropertyHash.m"; path = "../../NSObject+HTPropertyHash.m"; sourceTree = "<group>"; };
 		1FFA173816714C570023BBE6 /* NSObject+HTPropertyHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+HTPropertyHash.h"; path = "../../NSObject+HTPropertyHash.h"; sourceTree = "<group>"; };
-		1FFA173916714C570023BBE6 /* UIView+HTDrawInContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+HTDrawInContext.h"; path = "../../UIView+HTDrawInContext.h"; sourceTree = "<group>"; };
-		1FFA173A16714C570023BBE6 /* UIView+HTDrawInContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+HTDrawInContext.m"; path = "../../UIView+HTDrawInContext.m"; sourceTree = "<group>"; };
 		1FFA173E16714DBA0023BBE6 /* HTExampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTExampleTableViewController.h; sourceTree = "<group>"; };
 		1FFA173F16714DBA0023BBE6 /* HTExampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTExampleTableViewController.m; sourceTree = "<group>"; };
 		1FFA174116714E530023BBE6 /* HTGeneratedImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTGeneratedImagesViewController.h; sourceTree = "<group>"; };
@@ -147,12 +144,12 @@
 		1FFA173316714C4C0023BBE6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1F93B07B16FE9F070028BAC7 /* UIView+HTRaster.h */,
+				1F93B07C16FE9F070028BAC7 /* UIView+HTRaster.m */,
 				1FFA173616714C570023BBE6 /* HTStateAwareRasterImageView.h */,
 				1FFA173516714C570023BBE6 /* HTStateAwareRasterImageView.m */,
 				1FFA173816714C570023BBE6 /* NSObject+HTPropertyHash.h */,
 				1FFA173716714C570023BBE6 /* NSObject+HTPropertyHash.m */,
-				1FFA173916714C570023BBE6 /* UIView+HTDrawInContext.h */,
-				1FFA173A16714C570023BBE6 /* UIView+HTDrawInContext.m */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -169,8 +166,6 @@
 				1FFA176E16718D180023BBE6 /* HTNoRasterizationCell.m */,
 				1FCB6BE216728EF9005582ED /* HTCacheKeyCollector.h */,
 				1FCB6BE316728EF9005582ED /* HTCacheKeyCollector.m */,
-				1FCB6BE516728FBE005582ED /* NSObject+HTSingleton.h */,
-				1FCB6BE616728FBE005582ED /* NSObject+HTSingleton.m */,
 			);
 			name = "Table tab";
 			sourceTree = "<group>";
@@ -274,7 +269,6 @@
 				1FFA171716714B270023BBE6 /* HTAppDelegate.m in Sources */,
 				1FFA173B16714C570023BBE6 /* HTStateAwareRasterImageView.m in Sources */,
 				1FFA173C16714C570023BBE6 /* NSObject+HTPropertyHash.m in Sources */,
-				1FFA173D16714C570023BBE6 /* UIView+HTDrawInContext.m in Sources */,
 				1FFA174016714DBA0023BBE6 /* HTExampleTableViewController.m in Sources */,
 				1FFA174316714E530023BBE6 /* HTGeneratedImagesViewController.m in Sources */,
 				1FFA174B167150C30023BBE6 /* HTExampleRasterizableComponent.m in Sources */,
@@ -282,7 +276,7 @@
 				1FFA176F16718D180023BBE6 /* HTNoRasterizationCell.m in Sources */,
 				1FCB6BE1167288C0005582ED /* HTGeneratedImageTableCell.m in Sources */,
 				1FCB6BE416728EF9005582ED /* HTCacheKeyCollector.m in Sources */,
-				1FCB6BE716728FBF005582ED /* NSObject+HTSingleton.m in Sources */,
+				1F93B07D16FE9F070028BAC7 /* UIView+HTRaster.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

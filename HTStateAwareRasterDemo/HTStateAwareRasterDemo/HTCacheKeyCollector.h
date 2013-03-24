@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSObject+HTSingleton.h"
 
 @interface HTCacheKeyCollector : NSObject
 
 @property (nonatomic, strong) NSMutableArray *cacheKeys;
 
++ (instancetype)shared;
 - (void)cacheKeyAdded:(NSString *)cacheKey;
 
 @end
