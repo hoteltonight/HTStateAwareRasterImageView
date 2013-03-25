@@ -43,6 +43,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    self.rasterizableView.frame = self.bounds;
     [self regenerateImage:nil];
 }
 
@@ -115,7 +116,7 @@
 {
     CGSize size = self.bounds.size;
     BOOL useMinimumCapSize = self.implementsUseMinimumSizeForCaps && [self.rasterizableView useMinimumFrameForCaps];
-    if (CGSizeEqualToSize(size, CGSizeZero) && !useMinimumCapSize)
+    if ((size.width < 1 || size.height < 1) && !useMinimumCapSize)
     {
         return;
     }
@@ -167,7 +168,7 @@
         }
         
 #ifdef HT_DEBUG_SAVEFILES
-        NSString *fileName = [NSString stringWithFormat:@"/%@-%u.png", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
+        NSString *fileName = [NSString stringWithFormat:@"/%@-%u.jpg", NSStringFromClass([bSelf.rasterizableView class]), [cacheKey hash]];
         NSData *imageData = UIImageJPEGRepresentation(drawnImage, 1);
         NSString *imagePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
                                stringByAppendingPathComponent:fileName];
