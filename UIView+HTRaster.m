@@ -37,9 +37,9 @@
     {
         [view renderAllStateAwareRasterImageViewsFromTheBottomUp];
     }
-    if ([self isKindOfClass:[HTStateAwareRasterImageView class]])
+    if ([self isKindOfClass:[HTRasterView class]])
     {
-        HTStateAwareRasterImageView *rasterImageView = (HTStateAwareRasterImageView *)self;
+        HTRasterView *rasterImageView = (HTRasterView *)self;
         BOOL drawsOnMainThread = rasterImageView.drawsOnMainThread;
         rasterImageView.drawsOnMainThread = YES;
         [rasterImageView regenerateImage:^{
@@ -87,12 +87,12 @@
     return nil;
 }
 
-- (HTStateAwareRasterImageView *)htRasterImageView
+- (HTRasterView *)htRasterImageView
 {
     return objc_getAssociatedObject(self, (void *)&@selector(htRasterImageView));
 }
 
-- (void)setHtRasterImageView:(HTStateAwareRasterImageView *)htRasterImageView
+- (void)setHtRasterImageView:(HTRasterView *)htRasterImageView
 {
     objc_setAssociatedObject(self, (void *)&@selector(htRasterImageView), htRasterImageView, OBJC_ASSOCIATION_ASSIGN);
     [self performSelector:@selector(checkRegisterWithAncestor) withObject:nil afterDelay:0];
@@ -101,7 +101,7 @@
 - (void)htRasterDidMoveToSuperview
 {
     [self htRasterDidMoveToSuperview];
-    if (![self isKindOfClass:[HTStateAwareRasterImageView class]])
+    if (![self isKindOfClass:[HTRasterView class]])
     {
         return;
     }
@@ -110,25 +110,25 @@
 
 - (void)checkRegisterWithAncestor
 {
-    HTStateAwareRasterImageView *firstAncestorRasterImageView = [self firstAncestorRasterizableView].htRasterImageView;
+    HTRasterView *firstAncestorRasterImageView = [self firstAncestorRasterizableView].htRasterImageView;
     if (firstAncestorRasterImageView)
     {
-        [firstAncestorRasterImageView registerDescendantRasterImageView:(HTStateAwareRasterImageView *)self];
+        [firstAncestorRasterImageView registerDescendantRasterView:(HTRasterView *) self];
     }
 }
 
 - (void)unregisterWithAncestor
 {
-    HTStateAwareRasterImageView *firstAncestorRasterImageView = [self firstAncestorRasterizableView].htRasterImageView;
+    HTRasterView *firstAncestorRasterImageView = [self firstAncestorRasterizableView].htRasterImageView;
     if (firstAncestorRasterImageView)
     {
-        [firstAncestorRasterImageView unregisterDescendantRasterImageView:(HTStateAwareRasterImageView *)self];
+        [firstAncestorRasterImageView unregisterDescendantRasterView:(HTRasterView *) self];
     }
 }
 
 - (void)htRasterWillMoveToSuperview:(UIView *)newSuperview
 {
-    if (![self isKindOfClass:[HTStateAwareRasterImageView class]])
+    if (![self isKindOfClass:[HTRasterView class]])
     {
         return;
     }

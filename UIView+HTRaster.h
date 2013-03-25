@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HTStateAwareRasterImageView.h"
+#import "HTRasterView.h"
 
 @interface UIView (HTRaster)
 
-@property (nonatomic, assign) HTStateAwareRasterImageView *htRasterImageView;
+@property (nonatomic, assign) HTRasterView *htRasterImageView;
 
 - (void)drawRect:(CGRect)rect inContext:(CGContextRef)context;
 - (UIImage *)layerMaskImage;
